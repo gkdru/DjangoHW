@@ -1,5 +1,6 @@
 from django.db import models
 import datetime
+from django.core.exceptions import ValidationError
 
 
 class PersonExample(models.Model):
@@ -25,10 +26,15 @@ class Child(PersonExample):
         return self.name
 
 
+def validate_positive(value):
+    if value < 0:
+        raise ValidationError(f"Value must be zero or a positive number, got {value}")
+
+
 class IceCream(models.Model):
-    qtype = {"C": "Chocolate", "V": "Vanilla", "M": "Mint"}
-    flavor = models.CharField(choices=qtype, max_length=300)
-    price = models.IntegerField()
+    QTYPE_CHOICES = [("C", "Chocolate"), ("V", "Vanilla"), ("M", "Mint")]
+    flavor = models.CharField(choices=QTYPE_CHOICES, max_length=300)
+    price = models.IntegerField(validators=[validate_positive])
 
     def __str__(self) -> str:
         return self.flavor
