@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All</title>
+</head>
+
+<body>
+    <h1>Task List</h1>
+    <ul>
+        {% for task in tasks %}
+        <li>{{ task.title }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'tasks:createTask' %}">Create new task</a>
+</body>
+
+</html>
