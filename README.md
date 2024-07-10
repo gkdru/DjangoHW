@@ -7,4 +7,4 @@ Django HomeWork
 - [HW 5](https://github.com/gkdru/DjangoHW/tree/DjangoHW%235)
 - [HW 6](https://github.com/gkdru/DjangoHW/tree/DjangoHW%236)
 - [HW 7](https://github.com/gkdru/DjangoHW/tree/DjangoHW%237)
-- 
+
