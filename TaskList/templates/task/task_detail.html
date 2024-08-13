@@ -1,0 +1,13 @@
+{% extends "task/base.html" %}
+
+{% block content %}
+<h1>{{ task.title }}</h1>
+<p>{{ task.description }}</p>
+<p>Статус: {{ task.completed|yesno:"Выполнено,Не выполнено" }}</p>
+<p>Создано: {{ task.created_at }}</p>
+<p>Обновлено: {{ task.updated_at }}</p>
+
+<a href="{% url 'task-update' task.id %}">Редактировать</a>
+<a href="{% url 'task-delete' task.id %}">Удалить</a>
+<a href="{% url 'task-list' %}">Вернуться к списку задач</a>
+{% endblock %}
