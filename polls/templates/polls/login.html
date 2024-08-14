@@ -1,0 +1,23 @@
+{% extends "polls/base.html"%}
+
+
+{% block main %}
+<h2>Login</h2>
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<p>Вы уже выполнили вход</p>
+<form method="post" action="{% url 'polls:logout' %}">
+    {% csrf_token %}
+    <button type="submit">logout</button>
+</form>
+{% else %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" value="{{ next }}">
+    <input type="submit" value="Войти">
+</form>
+{% endif %}
+{% endblock %}
