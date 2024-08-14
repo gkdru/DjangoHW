@@ -18,6 +18,7 @@
     {{ form.as_p }}
     <input type="hidden" value="{{ next }}">
     <input type="submit" value="Войти">
+    <a href="{% url "social:begin" "google-oauth2" %}">Google+</a>
 </form>
 {% endif %}
 {% endblock %}

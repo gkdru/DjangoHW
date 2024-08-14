@@ -23,11 +23,13 @@ from django.views.generic.base import TemplateView, RedirectView
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 
-from .forms import QuestionForm 
+from .forms import QuestionForm
+@login_required(login_url='polls:login') 
 def index(request):
-    
     return render(request, "polls/base.html")
     
 
@@ -171,7 +173,8 @@ class QuestionDetail(DetailView):
     model = Question
 
 
-class QuestionList(ListView):
+class QuestionList(LoginRequiredMixin,ListView):
+    login_url = "polls:login"
     template_name = "polls/list.html"
     paginate_by = 6
     model = Question
