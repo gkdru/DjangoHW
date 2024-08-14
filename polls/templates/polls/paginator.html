@@ -1,0 +1,44 @@
+{% extends "polls/base.html"%}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href=" {% static '/polls/css/main.css' %}">
+    <title>Q</title>
+</head>
+<body>
+    <div id="global">
+    <div id="main">
+        {% block main %}   
+    {% for q in page_obj %}
+    {{  q.question_text}}
+    {{ q.pub_date }}
+    <br>
+    {% endfor %}
+    {% endblock main %}
+</div>
+<div id="content">
+    {% block content %}
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+    {% endblock content %}
+</div>
+</div>
+</body>
+</html>
