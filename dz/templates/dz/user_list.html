@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>All Users</title>
+</head>
+
+<body>
+    <h1>All Users</h1>
+    <ul>
+        {% for user in users %}
+        <li><a href="{% url 'dz:user_detail' user.pk %}">{{ user.username }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'dz:user_add' %}">Add New User</a>
+</body>
+
+</html>
