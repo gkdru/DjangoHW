@@ -10,4 +10,5 @@ Django HomeWork
 - [HW 8](https://github.com/gkdru/DjangoHW/tree/DjangoHW%238)
 - [HW 9](https://github.com/gkdru/DjangoHW/tree/DjangoHW%239)
 - [HW 10](https://github.com/gkdru/DjangoHW/tree/DjangoHW%2310)
+- [HW 11](https://github.com/gkdru/DjangoHW/tree/DjangoHW%2311)
 
