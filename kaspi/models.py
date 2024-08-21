@@ -2,7 +2,13 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
+from django.db.models.signals import post_save, post_delete
+from django.dispatch import receiver
+from django.contrib.postgres.fields import DateRangeField,DateTimeRangeField,ArrayField
+import datetime
 
+
+now = datetime.datetime.now()
 # Create your models here.
 class Review(models.Model):
     text = models.TextField(max_length=1000)
@@ -26,6 +32,8 @@ class Good(models.Model):
     reviews = GenericRelation('Review', default='123')
     def __str__(self) -> str:
         return self.name
+    
+
 
 class Shop(models.Model):
     created_date = models.DateField(auto_now_add=True)
@@ -41,7 +49,9 @@ class Shop(models.Model):
 
 class KaspiShop(Shop):
     name = models.TextField(max_length=250)
-    
+    example = DateTimeRangeField(verbose_name='Example')
+    active_in = DateRangeField(verbose_name='Активен между', default=('2024-12-12'))
+    tags = ArrayField(base_field=models.CharField(max_length=30),verbose_name='Tags')
 
 class RevKaspiShop(KaspiShop):
     class Meta:
@@ -55,3 +65,13 @@ class ShopGoods(models.Model):
 
 
 
+
+@receiver(post_save, sender=Good)
+def post_save_dispatcher(sender, **kwargs,):
+        if kwargs['created']:
+            print("Товар "+kwargs['instance'].name+" был создан")
+
+
+@receiver(post_delete,sender=Good)
+def post_delete_dispatcher(sender, **kwargs):
+        print(f"Товар {kwargs['instance'].name} удален")
