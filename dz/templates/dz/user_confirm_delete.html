@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-<html>
+{% extends 'dz/base.html' %}
 
-<head>
-    <title>Delete User</title>
-</head>
+{% block title %}Delete User{% endblock %}
 
-<body>
-    <h1>Are you sure you want to delete {{ user.username }}?</h1>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">Yes, delete</button>
-    </form>
-    <a href="{% url 'dz:users_list' %}">Cancel</a>
-</body>
-
-</html>
+{% block content %}
+<h1>Are you sure you want to delete {{ user.username }}?</h1>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Yes, delete</button>
+</form>
+<a href="{% url 'dz:users_list' %}">Cancel</a>
+{% endblock %}

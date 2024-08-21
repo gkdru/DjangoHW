@@ -1,18 +1,15 @@
-<!DOCTYPE html>
-<html>
+{% extends 'dz/base.html' %}
 
-<head>
-    <title>{% if user.pk %}Edit User{% else %}Add New User{% endif %}</title>
-</head>
+{% block title %}
+{% if user.pk %}Edit User{% else %}Add New User{% endif %}
+{% endblock %}
 
-<body>
-    <h1>{% if user.pk %}Edit User{% else %}Add New User{% endif %}</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">{% if user.pk %}Save Changes{% else %}Create User{% endif %}</button>
-    </form>
-    <a href="{% url 'dz:users_list' %}">Back to User List</a>
-</body>
-
-</html>
+{% block content %}
+<h1>{% if user.pk %}Edit User{% else %}Add New User{% endif %}</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{% if user.pk %}Save Changes{% else %}Create User{% endif %}</button>
+</form>
+<a href="{% url 'dz:users_list' %}">Back to User List</a>
+{% endblock %}

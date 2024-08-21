@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
 
-<head>
-    <title>User Details</title>
-</head>
+{% block title %}User Details{% endblock %}
 
-<body>
-    <h1>User Details</h1>
-    <p><strong>Username:</strong> {{ user.username }}</p>
-    <p><strong>Email:</strong> {{ user.email }}</p>
+{% block content %}
+<h1>User Details</h1>
+<p><strong>Username:</strong> {{ user.username }}</p>
+<p><strong>Email:</strong> {{ user.email }}</p>
 
-    <a href="{% url 'dz:user_edit' user.pk %}">Edit</a> |
-    <a href="{% url 'dz:user_delete' user.pk %}">Delete</a> |
-    <a href="{% url 'dz:users_list' %}">Back to User List</a>
-</body>
-
-</html>
+<a href="{% url 'dz:user_edit' user.pk %}">Edit</a> |
+<a href="{% url 'dz:user_delete' user.pk %}">Delete</a> |
+<a href="{% url 'dz:users_list' %}">Back to User List</a>
+{% endblock %

@@ -1,20 +1,15 @@
-<!DOCTYPE html>
-<html>
+{% extends 'dz/base.html' %}
 
-<head>
-    <title>User Activity</title>
-</head>
+{% block title %}User Activity{% endblock %}
 
-<body>
-    <h1>Activity Log</h1>
-    <ul>
-        {% for activity in activities %}
-        <li>
-            <strong>{{ activity.user.username }}</strong> - {{ activity.action }} at {{ activity.timestamp|date:"Y-m-d
-            H:i" }}
-        </li>
-        {% endfor %}
-    </ul>
-</body>
-
-</html>
+{% block content %}
+<h1>Activity Log</h1>
+<ul>
+    {% for activity in activities %}
+    <li>
+        <strong>{{ activity.user.username }}</strong> - {{ activity.action }} at {{ activity.timestamp|date:"Y-m-d H:i"
+        }}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
