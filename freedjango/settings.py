@@ -54,6 +54,9 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware'
 ]
 
 ROOT_URLCONF = "freedjango.urls"
@@ -80,22 +83,22 @@ WSGI_APPLICATION = "freedjango.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 # POSTGRESQL
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "django",
-        "USER": "postgres",
-        "PASSWORD": "123",
-        "HOST": "localhost",
-        "PORT": "5050",
-    }
-}
 # DATABASES = {
 #     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
+#         "ENGINE": "django.db.backends.postgresql_psycopg2",
+#         "NAME": "django",
+#         "USER": "postgres",
+#         "PASSWORD": "123",
+#         "HOST": "localhost",
+#         "PORT": "5050",
 #     }
 # }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -149,3 +152,31 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     
 )
+
+
+
+# CASHES = {
+#     'default': {
+#         'BACKEND':  
+#                 'django.core.cache.backends.redis.RedisCache',
+#         'LOCATION': 'redis://redis-18306.c302.asia-northeast1-1.gce.redns.redis-cloud.com:18306',
+#         'OPTIONS': {
+#             'PASSWORD' : 'gifTs1TvvfK7mDS9SuFNvpW0j4KBdA77',
+#         }
+#     }
+# }
+CACHES = { 
+    'default': { 
+        'BACKEND':  
+                'django.core.cache.backends.redis.RedisCache', 
+        'LOCATION': 'redis://redis-12583.c299.asia-northeast1-1.gce.redns.redis-cloud.com:12583', 
+        'OPTIONS': { 
+            'password': 'euq9hnBtrn8FkRdsSLfNGftSf6PRqpt9', 
+        } 
+    } 
+}
+
+
+CACHE_MIDDLEWARE_ALIAS = 'default'
+CACHE_MIDDLEWARE_SECONDS = 30
+CACHE_MIDDLEWARE_KEY_PREFIX = 'aaaa'
