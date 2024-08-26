@@ -1,0 +1,23 @@
+{% extends "polls/base.html"%}
+{% load custom %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>custom add</title>
+  </head>
+  <body>
+    <div id="main">
+      {% block main %}
+      <h1>ADD:</h1>
+      {{ q1.question_text|custom_add:q2.question_text}}
+      {% endblock main %}
+    </div>
+    <div id="content">
+      {% block content %}
+      {% endblock content %}
+    </div>
+  </body>
+</html>

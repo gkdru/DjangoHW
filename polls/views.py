@@ -232,3 +232,8 @@ def paginator(request):
     page_obj = paginator.get_page(page_num)
     return render(request, "polls/paginator.html", {"page_obj": page_obj})
 
+
+def custom_filter(request):
+    q1 = Question.objects.first()
+    q2 = Question.objects.last()
+    return render(request, "polls/custom_filter.html", {"q1":q1, "q2":q2})

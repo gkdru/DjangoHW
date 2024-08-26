@@ -41,4 +41,5 @@ urlpatterns = [
     path('logout', LogoutView.as_view(next_page='polls:index'), name='logout'),
     path('pass-reset', PasswordResetView.as_view(template_name='polls/password-reset.html', success_url=reverse_lazy('polls:password-reset-done')),name='password-reset'),
     path('pass-reset-done',PasswordResetDoneView.as_view(template_name='polls/password-done.html'),name='password-reset-done'),
+    path('custom-f', views.custom_filter, name='custom-filter'),
 ]

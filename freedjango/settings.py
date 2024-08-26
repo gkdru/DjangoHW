@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     # "park",
     "polls",
     'social_django',
-]
+    'bootstrap4',
+    ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -73,6 +74,9 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
             ],
+             "libraries":{
+                    'custom': 'freedjango.templatetags.custom'
+                }
         },
     },
 ]

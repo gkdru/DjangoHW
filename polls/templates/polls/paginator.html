@@ -1,6 +1,6 @@
 {% extends "polls/base.html"%}
 {% load static %}
-
+{% load bootstrap4 %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +12,7 @@
 <body>
     <div id="global">
     <div id="main">
-        {% block main %}   
+        <!-- {% block main %}   
     {% for q in page_obj %}
     {{  q.question_text}}
     {{ q.pub_date }}
@@ -37,7 +37,8 @@
             <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
         {% endif %}
     </span>
-    {% endblock content %}
+    {% endblock content %} -->
+    {% bootstrap_pagination page size='big' %}
 </div>
 </div>
 </body>
