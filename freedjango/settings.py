@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "users.apps.UsersConfig",
-    "kaspi",
+    # "kaspi",
     "polygraphy.apps.PolygraphyConfig",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # "park",
     "polls",
     'social_django',
+    'userprofile',
     'bootstrap4',
     ]
 
@@ -71,6 +72,7 @@ TEMPLATES = [
             "context_processors": [
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",
+                'django.template.context_processors.media',
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
             ],
@@ -184,3 +186,7 @@ CACHES = {
 CACHE_MIDDLEWARE_ALIAS = 'default'
 CACHE_MIDDLEWARE_SECONDS = 30
 CACHE_MIDDLEWARE_KEY_PREFIX = 'aaaa'
+
+
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = 'media/'

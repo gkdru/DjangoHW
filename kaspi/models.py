@@ -49,9 +49,9 @@ class Shop(models.Model):
 
 class KaspiShop(Shop):
     name = models.TextField(max_length=250)
-    example = DateTimeRangeField(verbose_name='Example')
-    active_in = DateRangeField(verbose_name='Активен между', default=(now,'2024-12-12'))
-    tags = ArrayField(base_field=models.CharField(max_length=30),verbose_name='Tags')
+    # example = DateTimeRangeField(verbose_name='Example')
+    # active_in = DateRangeField(verbose_name='Активен между', default=(now,'2024-12-12'))
+    # tags = ArrayField(base_field=models.CharField(max_length=30),verbose_name='Tags')
 
 class RevKaspiShop(KaspiShop):
     class Meta:
