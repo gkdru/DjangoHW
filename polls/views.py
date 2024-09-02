@@ -30,7 +30,13 @@ from django.core.paginator import Paginator
 from .forms import QuestionForm
 @login_required(login_url='polls:login') 
 def index(request):
-    return render(request, "polls/base.html")
+    if 'counter' in request.COOKIES:
+        cnt = int(request.COOKIES['counter']) + 1
+    else:
+        cnt = 1
+    response = render(request, "polls/base.html", {"my_custom_attr" : request.my_custom_attr, "customatr": request.customatr, "cnt": cnt})
+    response.set_cookie('counter', cnt)
+    return response
     
 
 def detail(request, question_id):

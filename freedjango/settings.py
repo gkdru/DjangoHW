@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     ]
 
 MIDDLEWARE = [
+    "polls.middleware.simple_middleware",
+    "polls.middleware.CustomMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -58,7 +60,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware'
+    'django.middleware.cache.FetchFromCacheMiddleware',
 ]
 
 ROOT_URLCONF = "freedjango.urls"
@@ -83,7 +85,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "freedjango.wsgi.application"
+# WSGI_APPLICATION = "freedjango.wsgi.application"
 
 
 # Database
