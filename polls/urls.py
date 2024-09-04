@@ -1,10 +1,10 @@
 from xml.etree.ElementInclude import include
 from django.urls import path, re_path,reverse_lazy
-from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, PasswordResetDoneView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView
 
 from . import views
 
-app_name = "polls"
+# app_name = "polls"
 urlpatterns = [
     re_path(r"^index/$", views.index, name="index"),
     path("<int:question_id>/", views.QuestionRedirectView.as_view(), name="detail"),
@@ -39,7 +39,8 @@ urlpatterns = [
     path('q_paginator', views.paginator, name='q-paginator'),
     path('login', LoginView.as_view(template_name="polls/login.html",next_page='polls:index'), name='login'),
     path('logout', LogoutView.as_view(next_page='polls:index'), name='logout'),
-    path('pass-reset', PasswordResetView.as_view(template_name='polls/password-reset.html', success_url=reverse_lazy('polls:password-reset-done')),name='password-reset'),
+    path('pass-reset', PasswordResetView.as_view(template_name='polls/password-reset.html', success_url=reverse_lazy('password-reset-done')),name='password-reset'),
     path('pass-reset-done',PasswordResetDoneView.as_view(template_name='polls/password-done.html'),name='password-reset-done'),
+    path('password_reset_confirm/<str:uidb64>/<str:token>}',  PasswordResetConfirmView.as_view(template_name='registration/password_reset_email.html'), name='password_reset_confirm'),
     path('custom-f', views.custom_filter, name='custom-filter'),
 ]
