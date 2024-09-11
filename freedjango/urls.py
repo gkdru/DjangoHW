@@ -24,6 +24,7 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('polls/', include('polls.urls')),
     path('up/', include('userprofile.urls')),
+    path('kaspi/', include('kaspi.urls')),
     path('', include('social_django.urls', namespace='social'))
 ]   
 

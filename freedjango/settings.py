@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "users.apps.UsersConfig",
-    # "kaspi",
+    "kaspi",
     "polygraphy.apps.PolygraphyConfig",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -46,10 +46,13 @@ INSTALLED_APPS = [
     'social_django',
     'userprofile',
     'bootstrap4',
+    "rest_framework",
+    "corsheaders",
     ]
 
 MIDDLEWARE = [
     "polls.middleware.simple_middleware",
+    "corsheaders.middleware.CorsMiddleware",
     "polls.middleware.CustomMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
