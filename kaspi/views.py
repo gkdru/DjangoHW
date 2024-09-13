@@ -5,16 +5,17 @@ from .models import Good, KaspiShop
 from django.http import HttpResponse
 from .serializer import GoodSerializer, KaspiSerializer
 from django.http import JsonResponse
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status, generics
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
+from rest_framework.permissions import IsAuthenticated
 
 
 class ApiGoodsViewSet(ModelViewSet):
     queryset = Good.objects.all()
     serializer_class = GoodSerializer
-
+@permission_classes([IsAuthenticated])
 class ApiGoodsViewSetReadOnly(ReadOnlyModelViewSet):
     queryset = KaspiShop.objects.all()
     serializer_class = KaspiSerializer
