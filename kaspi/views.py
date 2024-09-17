@@ -15,6 +15,8 @@ from rest_framework.permissions import IsAuthenticated
 class ApiGoodsViewSet(ModelViewSet):
     queryset = Good.objects.all()
     serializer_class = GoodSerializer
+
+
 @permission_classes([IsAuthenticated])
 class ApiGoodsViewSetReadOnly(ReadOnlyModelViewSet):
     queryset = KaspiShop.objects.all()
@@ -24,8 +26,6 @@ class ApiGoodsViewSetReadOnly(ReadOnlyModelViewSet):
 # class APIGoods(generics.ListAPIView):
 #     queryset = Good.objects.all()
 #     serializer_class = GoodSerializer
-
-
 
 
 # class APIGoodsDetail(generics.RetrieveUpdateDestroyAPIView):

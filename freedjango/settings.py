@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 from datetime import timedelta
+from logging.handlers import RotatingFileHandler
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -45,13 +47,13 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # "park",
     "polls",
-    'social_django',
-    'userprofile',
-    'bootstrap4',
+    "social_django",
+    "userprofile",
+    "bootstrap4",
     "rest_framework",
     "corsheaders",
-    'rest_framework_simplejwt',
-    ]
+    "rest_framework_simplejwt",
+]
 
 MIDDLEWARE = [
     "polls.middleware.simple_middleware",
@@ -64,9 +66,9 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    'django.middleware.cache.UpdateCacheMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
+    "django.middleware.cache.UpdateCacheMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.cache.FetchFromCacheMiddleware",
 ]
 
 ROOT_URLCONF = "freedjango.urls"
@@ -80,13 +82,11 @@ TEMPLATES = [
             "context_processors": [
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",
-                'django.template.context_processors.media',
+                "django.template.context_processors.media",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
             ],
-             "libraries":{
-                    'custom': 'freedjango.templatetags.custom'
-                }
+            "libraries": {"custom": "freedjango.templatetags.custom"},
         },
     },
 ]
@@ -156,22 +156,20 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTHENTICATION_BACKENDS = (
-    'social_core.backends.open_id.OpenIdAuth',
-    'social_core.backends.google.GoogleOAuth2',
-    'social_core.backends.google.GoogleOAuth',
-    'social_core.backends.twitter.TwitterOAuth',
+    "social_core.backends.open_id.OpenIdAuth",
+    "social_core.backends.google.GoogleOAuth2",
+    "social_core.backends.google.GoogleOAuth",
+    "social_core.backends.twitter.TwitterOAuth",
     # 'social_core.backends.yahoo.YahooOpenId',
-    'social_core.backends.github.GithubOAuth2',
-    'social_core.backends.instagram.InstagramOAuth2',
-    'django.contrib.auth.backends.ModelBackend',
-    
+    "social_core.backends.github.GithubOAuth2",
+    "social_core.backends.instagram.InstagramOAuth2",
+    "django.contrib.auth.backends.ModelBackend",
 )
-
 
 
 # CASHES = {
 #     'default': {
-#         'BACKEND':  
+#         'BACKEND':
 #                 'django.core.cache.backends.redis.RedisCache',
 #         'LOCATION': 'redis://redis-18306.c302.asia-northeast1-1.gce.redns.redis-cloud.com:18306',
 #         'OPTIONS': {
@@ -179,42 +177,68 @@ AUTHENTICATION_BACKENDS = (
 #         }
 #     }
 # }
-CACHES = { 
-    'default': { 
-        'BACKEND':  
-                'django.core.cache.backends.redis.RedisCache', 
-        'LOCATION': 'redis://redis-12583.c299.asia-northeast1-1.gce.redns.redis-cloud.com:12583', 
-        'OPTIONS': { 
-            'password': 'euq9hnBtrn8FkRdsSLfNGftSf6PRqpt9', 
-        } 
-    } 
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": "redis://redis-12583.c299.asia-northeast1-1.gce.redns.redis-cloud.com:12583",
+        "OPTIONS": {
+            "password": "euq9hnBtrn8FkRdsSLfNGftSf6PRqpt9",
+        },
+    }
 }
 
 
-CACHE_MIDDLEWARE_ALIAS = 'default'
+CACHE_MIDDLEWARE_ALIAS = "default"
 CACHE_MIDDLEWARE_SECONDS = 30
-CACHE_MIDDLEWARE_KEY_PREFIX = 'aaaa'
+CACHE_MIDDLEWARE_KEY_PREFIX = "aaaa"
 
 
-MEDIA_ROOT = BASE_DIR / 'media'
-MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = "media/"
 
 # EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
-EMAIL_FILE_PATH = BASE_DIR / 'media'
+EMAIL_FILE_PATH = BASE_DIR / "media"
 
 
 REST_FRAMEWORK = {
-
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
-
- 'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ]
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
 }
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
+}
+
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": True,
+    "formatters": {
+        "simple": {
+            "format": "{levelname} {message}",
+            "datefmt": "%Y. %m. %d. %H:%M:%S",
+            "style": "{",
+        },
+    },
+    "handlers": {
+        "file": {
+            "level": "DEBUG",
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": os.path.join(BASE_DIR / "logs", "debug.log"),
+            "formatter": "simple",
+            "maxBytes": 1024 * 1024 * 3,
+            "backupCount": 5,
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["file"],
+            "level": "DEBUG",
+            "propagate": True,
+        },
+    },
 }
