@@ -175,13 +175,11 @@ AUTHENTICATION_BACKENDS = (
 #         }
 #     }
 # }
+
+# Replace it with a local memory cache for PythonAnywhere
 CACHES = {
-    "default": {
-        "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": "redis://redis-12583.c299.asia-northeast1-1.gce.redns.redis-cloud.com:12583",
-        "OPTIONS": {
-            "password": "euq9hnBtrn8FkRdsSLfNGftSf6PRqpt9",
-        },
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
     }
 }
 
