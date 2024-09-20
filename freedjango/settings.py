@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # "park",
     "polls",
-    "social_django",
     "userprofile",
     "bootstrap4",
     "rest_framework",
