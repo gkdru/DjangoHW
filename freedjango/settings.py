@@ -214,31 +214,31 @@ SIMPLE_JWT = {
 }
 
 
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": True,
-    "formatters": {
-        "simple": {
-            "format": "{levelname} {message}",
-            "datefmt": "%Y. %m. %d. %H:%M:%S",
-            "style": "{",
-        },
-    },
-    "handlers": {
-        "file": {
-            "level": "DEBUG",
-            "class": "logging.handlers.RotatingFileHandler",
-            "filename": os.path.join(BASE_DIR / "logs", "debug.log"),
-            "formatter": "simple",
-            "maxBytes": 1024 * 1024 * 3,
-            "backupCount": 5,
-        },
-    },
-    "loggers": {
-        "django": {
-            "handlers": ["file"],
-            "level": "DEBUG",
-            "propagate": True,
-        },
-    },
-}
+# LOGGING = {
+#     "version": 1,
+#     "disable_existing_loggers": True,
+#     "formatters": {
+#         "simple": {
+#             "format": "{levelname} {message}",
+#             "datefmt": "%Y. %m. %d. %H:%M:%S",
+#             "style": "{",
+#         },
+#     },
+#     "handlers": {
+#         "file": {
+#             "level": "DEBUG",
+#             "class": "logging.handlers.RotatingFileHandler",
+#             "filename": os.path.join(BASE_DIR / "logs", "debug.log"),
+#             "formatter": "simple",
+#             "maxBytes": 1024 * 1024 * 3,
+#             "backupCount": 5,
+#         },
+#     },
+#     "loggers": {
+#         "django": {
+#             "handlers": ["file"],
+#             "level": "DEBUG",
+#             "propagate": True,
+#         },
+#     },
+# }
