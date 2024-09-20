@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     # "park",
     "polls",
     "userprofile",
-    "bootstrap4",
     "rest_framework",
     "corsheaders",
     "rest_framework_simplejwt",
