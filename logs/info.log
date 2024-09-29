@@ -1,0 +1,12 @@
+INFO 2024-09-29 13:48:32,526 autoreload Watching for file changes with StatReloader
+INFO 2024-09-29 13:48:36,701 autoreload Watching for file changes with StatReloader
+INFO 2024-09-29 13:48:49,904 autoreload Watching for file changes with StatReloader
+WARNING 2024-09-29 13:48:57,353 log Not Found: /dz/login
+WARNING 2024-09-29 13:48:57,353 basehttp "GET /dz/login HTTP/1.1" 404 2195
+WARNING 2024-09-29 13:48:57,496 log Not Found: /favicon.ico
+WARNING 2024-09-29 13:48:57,497 basehttp "GET /favicon.ico HTTP/1.1" 404 2204
+INFO 2024-09-29 13:48:59,546 basehttp "GET / HTTP/1.1" 200 12068
+WARNING 2024-09-29 13:49:02,574 log Not Found: /info
+WARNING 2024-09-29 13:49:02,575 basehttp "GET /info HTTP/1.1" 404 2183
+WARNING 2024-09-29 13:49:18,877 log Not Found: /info/
+WARNING 2024-09-29 13:49:18,878 basehttp "GET /info/ HTTP/1.1" 404 2186
